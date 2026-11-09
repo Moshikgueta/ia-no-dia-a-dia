@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Curso IA no Dia a Dia · IA para pequenos negócios</title>
+<meta name="description" content="Curso completo e passo a passo para pequenos negócios usarem o Claude e o ChatGPT em todas as áreas do dia a dia: atendimento, marketing, vendas, finanças, estoque, equipe, documentos e automações.">
+<meta name="theme-color" content="#F6F1E7">
+<meta property="og:title" content="Curso IA no Dia a Dia · IA para pequenos negócios">
+<meta property="og:description" content="12 módulos, mais de 50 aulas práticas, em linguagem simples.">
+<meta property="og:image" content="https://moshikgueta.github.io/ia-no-dia-a-dia/moshik.jpg">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6F1E7; --paper:#FFFCF6; --white:#fff;
+  --ink:#16302A; --ink-2:#3D524C; --muted:#6B746F;
+  --line:rgba(22,48,42,.13); --line-2:rgba(22,48,42,.24);
+  --green:#1F5A47; --green-2:#17463A; --green-soft:#DDEBE2;
+  --sun:#F2B33D; --sun-2:#E09E22; --sun-soft:#FCEBC6; --red-soft:#F5E3DC;
+  --deep:#122822; --on-deep:#F6F1E7; --on-deep-2:#AFC2BA;
+  --head:"Bricolage Grotesque",system-ui,sans-serif; --sans:"Instrument Sans",system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1);
+  --side:310px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit}
+p{text-wrap:pretty}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--head);font-weight:600;letter-spacing:-.025em;margin:0;text-wrap:balance}
+.hl{background:linear-gradient(transparent 58%,var(--sun) 58%,var(--sun) 90%,transparent 90%);padding:0 .06em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 22px;border-radius:14px;border:0;font:600 15.5px var(--sans);text-decoration:none;cursor:pointer;transition:background-color .2s ease,box-shadow .2s ease,transform .12s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-green{background:var(--green);color:#fff}
+@media (hover:hover){.btn-green:hover{background:var(--green-2)}}
+.btn-sun{background:var(--sun);color:var(--ink)}
+@media (hover:hover){.btn-sun:hover{background:var(--sun-2)}}
+.btn-line{background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line-2)}
+@media (hover:hover){.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}}
+
+/* topo */
+header{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:16px;height:66px;padding:0 20px;background:rgba(246,241,231,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 18px/1 var(--head);white-space:nowrap}
+.brand i{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--green);color:var(--sun);font:700 13px var(--head);font-style:normal}
+.brand small{font:500 13px var(--sans);color:var(--muted);margin-left:2px}
+.prog-top{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--muted);white-space:nowrap}
+.bar{width:140px;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--green);border-radius:999px;transition:width .4s var(--ease)}
+.menu-btn{display:none;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:0;border-radius:12px;background:var(--green);color:#fff;font-weight:600;font-size:14px;cursor:pointer}
+@media (max-width:1000px){.menu-btn{display:inline-flex;margin-left:auto}.prog-top{display:none}}
+@media (max-width:420px){.brand small{display:none}}
+
+/* layout */
+.layout{display:grid;grid-template-columns:var(--side) minmax(0,1fr);min-height:calc(100vh - 66px)}
+aside{position:sticky;top:66px;height:calc(100vh - 66px);overflow-y:auto;overscroll-behavior:contain;padding:18px 14px 40px;border-right:1px solid var(--line);background:var(--paper)}
+aside .home-link{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15px;margin-bottom:8px}
+aside .home-link[aria-current=true]{background:var(--green-soft);color:var(--green)}
+.mod{margin-bottom:4px}
+.mod>button{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:6px 10px;border:0;border-radius:12px;background:none;text-align:left;cursor:pointer;font-size:14.5px;font-weight:600}
+@media (hover:hover){.mod>button:hover{background:var(--cream)}}
+.mod>button .ic{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--cream);font-size:16px}
+.mod>button .t{flex:1;line-height:1.25}
+.mod>button .t small{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.mod>button .chev{flex:none;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s var(--ease);margin-right:4px}
+.mod.open>button .chev{transform:rotate(-135deg)}
+.mod ol{list-style:none;margin:2px 0 8px;padding:0 0 0 18px;display:none}
+.mod.open ol{display:block}
+.mod li a{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:10px;text-decoration:none;font-size:14px;line-height:1.35;color:var(--ink-2)}
+@media (hover:hover){.mod li a:hover{background:var(--cream)}}
+.mod li a[aria-current=true]{background:var(--green-soft);color:var(--green);font-weight:600}
+.dot{flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--line-2);display:grid;place-items:center}
+.dot.done{background:var(--green);box-shadow:none}
+.dot.done::after{content:"";width:7px;height:4px;margin-top:-2px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
+.scrim{display:none}
+@media (max-width:1000px){
+  .layout{grid-template-columns:1fr}
+  aside{position:fixed;top:0;left:0;bottom:0;z-index:50;width:min(340px,88vw);height:100%;transform:translateX(-102%);transition:transform .3s var(--ease);box-shadow:20px 0 60px -20px rgba(0,0,0,.35);padding-top:20px}
+  body.nav-open aside{transform:none}
+  .scrim{display:block;position:fixed;inset:0;z-index:40;background:rgba(18,40,34,.4);opacity:0;pointer-events:none;transition:opacity .25s ease}
+  body.nav-open .scrim{opacity:1;pointer-events:auto}
+}
+
+main:focus{outline:none}
+main{padding:clamp(28px,4vw,56px) clamp(20px,4vw,64px) 80px;max-width:900px;width:100%}
+
+/* início */
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.02;margin:14px 0 16px}
+.kick{display:inline-block;padding:5px 12px;border-radius:999px;background:var(--green-soft);color:var(--green);font:600 13px var(--sans)}
+.hero p.lead{font-size:clamp(17px,1.4vw,19px);color:var(--ink-2);margin:0 0 26px;max-width:36em}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 28px}
+.stats div{padding:14px 18px;border-radius:16px;background:var(--paper);box-shadow:0 0 0 1px var(--line)}
+.stats b{display:block;font:700 26px/1 var(--head)}
+.stats span{font-size:13px;color:var(--muted)}
+.resume{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 40px;padding:22px 24px;border-radius:20px;background:var(--deep);color:var(--on-deep)}
+.resume small{display:block;color:var(--on-deep-2);font-size:13px;margin-bottom:2px}
+.resume b{font:600 19px/1.3 var(--head)}
+.resume .bar{width:100%;max-width:280px;background:rgba(246,241,231,.15);margin-top:10px}
+.resume .bar i{background:var(--sun)}
+.mods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mcard{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:20px;background:var(--paper);box-shadow:0 0 0 1px var(--line);text-decoration:none;transition:box-shadow .2s ease,transform .2s var(--ease)}
+@media (hover:hover){.mcard:hover{box-shadow:0 0 0 1.5px var(--green);transform:translateY(-2px)}}
+.mcard .top{display:flex;align-items:center;gap:12px}
+.mcard .ic{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--cream);font-size:22px}
+.mcard .num{font-size:12.5px;font-weight:600;color:var(--muted)}
+.mcard h3{font-size:21px;line-height:1.2}
+.mcard p{margin:0;font-size:14.5px;color:var(--ink-2);flex:1}
+.mcard .foot{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.mcard .foot .bar{width:auto;flex:1}
+@media (max-width:640px){.mods{grid-template-columns:1fr}}
+
+/* aula */
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.crumb a{text-decoration:none}
+@media (hover:hover){.crumb a:hover{color:var(--green)}}
+.lesson h1{font-size:clamp(32px,4.2vw,50px);line-height:1.06;margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.meta span{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:10px;background:var(--paper);box-shadow:0 0 0 1px var(--line);font-size:13.5px;color:var(--ink-2)}
+.goal{display:flex;gap:14px;padding:18px 20px;border-radius:18px;background:var(--green-soft);color:var(--green-2);margin:0 0 30px}
+.goal b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.lesson h2{font-size:24px;margin:36px 0 14px}
+.lesson .intro p{margin:0 0 14px;color:var(--ink-2)}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:10px}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;padding:14px 16px;border-radius:16px;background:var(--paper);box-shadow:0 0 0 1px var(--line)}
+ol.steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--green);color:var(--sun);font:700 15px var(--head)}
+.prompt{margin:0 0 14px;border-radius:18px;background:var(--white);box-shadow:0 0 0 1px var(--line),0 12px 30px -24px rgba(22,48,42,.5);overflow:hidden}
+.prompt .ph{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 18px;background:var(--green-soft)}
+.prompt .ph b{font-size:13px;letter-spacing:.04em;color:var(--green)}
+.copy{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:0;border-radius:10px;background:var(--green);color:#fff;font-size:13.5px;font-weight:600;cursor:pointer;transition:background-color .2s ease}
+.copy.ok{background:var(--sun);color:var(--ink)}
+.copy svg{width:15px;height:15px}
+.prompt pre{margin:0;padding:16px 18px;white-space:pre-wrap;word-break:break-word;font:400 15.5px/1.65 var(--sans);color:var(--ink)}
+.prompt pre mark{background:var(--sun-soft);color:#7A5512;border-radius:4px;padding:0 2px}
+.tools-note{margin:-4px 0 18px;font-size:13.5px;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vs div{padding:18px 20px;border-radius:16px;font-size:15.5px}
+.vs .bad{background:var(--red-soft);color:#5B2E20}
+.vs .good{background:var(--green-soft);color:var(--green-2)}
+.vs b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+.note{margin:18px 0 0;padding:16px 18px;border-radius:16px;font-size:15.5px}
+.note b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.note.tip{background:var(--paper);box-shadow:0 0 0 1px var(--line)}
+.note.warn{background:var(--sun-soft);color:#5C4210}
+.exercise{padding:22px 24px;border-radius:20px;background:var(--deep);color:var(--on-deep)}
+.exercise b{display:block;color:var(--sun);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.exercise p{margin:0;font-size:16.5px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.checks label{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:11px 14px;border-radius:14px;background:var(--paper);box-shadow:0 0 0 1px var(--line);cursor:pointer;font-size:15.5px}
+.checks input{flex:none;width:22px;height:22px;margin:1px 0 0;accent-color:var(--green);cursor:pointer}
+.finish{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.finish .nav{display:flex;gap:10px;flex-wrap:wrap}
+.done-btn[aria-pressed=true]{background:var(--green-soft);color:var(--green);box-shadow:inset 0 0 0 1.5px var(--green)}
+.empty{padding:40px;border-radius:20px;background:var(--paper);box-shadow:0 0 0 1px var(--line);text-align:center;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:24px;z-index:60;translate:-50% 0;padding:12px 18px;border-radius:14px;background:var(--deep);color:var(--on-deep);font-size:14.5px;opacity:0;transform:translateY(10px);transition:opacity .25s ease,transform .25s var(--ease);pointer-events:none}
+.toast.show{opacity:1;transform:none}
+footer{padding:28px 0 0;margin-top:56px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+footer a{color:var(--green)}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#/"><i>IA</i>no Dia a Dia <small>· Curso</small></a>
+  <div class="prog-top"><span id="progTxt">0% concluído</span><div class="bar"><i id="progBar"></i></div></div>
+  <button class="menu-btn" type="button" id="menuBtn" aria-controls="side" aria-expanded="false">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Aulas</button>
+</header>
+
+<div class="layout">
+  <aside id="side" aria-label="Módulos e aulas"></aside>
+  <div class="scrim" id="scrim"></div>
+  <main id="view" tabindex="-1"></main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data/m01.js"></script>
+<script src="data/m02.js"></script>
+<script src="data/m03.js"></script>
+<script src="data/m04.js"></script>
+<script src="data/m05.js"></script>
+<script src="data/m06.js"></script>
+<script src="data/m07.js"></script>
+<script src="data/m08.js"></script>
+<script src="data/m09.js"></script>
+<script src="data/m10.js"></script>
+<script src="data/m11.js"></script>
+<script src="data/m12.js"></script>
+<script>
+const WA = "5541999919434";
+const KEY = "iadd-curso-v1";
+const MODS = (window.CURSO || []).slice().sort((a, b) => a.n - b.n);
+const ALL = MODS.flatMap(m => m.lessons.map(l => ({ ...l, mod: m })));
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const mark = s => esc(s).replace(/\[([^\]\n]{1,80})\]/g, "<mark>[$1]</mark>");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* progresso salvo no próprio navegador */
+let P = { done: {}, checks: {}, last: null };
+try { P = Object.assign(P, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(P)); } catch (e) {} };
+const isDone = id => !!P.done[id];
+const modDone = m => m.lessons.filter(l => isDone(l.id)).length;
+const pct = () => ALL.length ? Math.round(ALL.filter(l => isDone(l.id)).length / ALL.length * 100) : 0;
+
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 1800); }
+
+function renderSide(curId){
+  const curMod = curId ? ALL.find(l => l.id === curId)?.mod.id : null;
+  $("#side").innerHTML = `<a class="home-link" href="#/" aria-current="${!curId}">🏠 Início do curso</a>` +
+    MODS.map(m => `<div class="mod ${m.id === curMod ? "open" : ""}" data-m="${m.id}">
+      <button type="button" aria-expanded="${m.id === curMod}"><span class="ic" aria-hidden="true">${m.icon}</span><span class="t">${m.n}. ${esc(m.title)}<small>${modDone(m)} de ${m.lessons.length} aulas</small></span><span class="chev" aria-hidden="true"></span></button>
+      <ol>${m.lessons.map(l => `<li><a href="#/${l.id}" aria-current="${l.id === curId}"><span class="dot ${isDone(l.id) ? "done" : ""}" aria-hidden="true"></span>${esc(l.title)}</a></li>`).join("")}</ol>
+    </div>`).join("");
+  const p = pct(); $("#progTxt").textContent = p + "% concluído"; $("#progBar").style.width = p + "%";
+}
+$("#side").addEventListener("click", e => {
+  const b = e.target.closest(".mod>button"); if (b) { const m = b.parentElement; m.classList.toggle("open"); b.setAttribute("aria-expanded", m.classList.contains("open")); return; }
+  if (e.target.closest("a")) closeNav();
+});
+
+function nextUnfinished(){ return ALL.find(l => !isDone(l.id)) || ALL[0]; }
+
+function renderHome(){
+  const total = ALL.length, mins = ALL.reduce((s, l) => s + (l.dur || 0), 0);
+  const cont = P.last && ALL.find(l => l.id === P.last) && !isDone(P.last) ? ALL.find(l => l.id === P.last) : nextUnfinished();
+  const started = Object.keys(P.done).length > 0;
+  $("#view").innerHTML = `<div class="hero">
+      <span class="kick">Curso completo · IA para pequenos negócios</span>
+      <h1>Todas as áreas do seu negócio, <span class="hl">mais fáceis</span> com IA.</h1>
+      <p class="lead">Do atendimento às finanças, do estoque à equipe: aulas curtas e práticas para usar o Claude e o ChatGPT no dia a dia, em linguagem simples, pelo celular. Cada aula tem passo a passo, frases prontas para copiar e um exercício com o seu próprio negócio.</p>
+      <div class="stats"><div><b>${MODS.length}</b><span>módulos</span></div><div><b>${total}</b><span>aulas práticas</span></div><div><b>${Math.round(mins / 60)}h</b><span>de conteúdo</span></div><div><b>${ALL.reduce((s, l) => s + (l.prompts || []).length, 0)}</b><span>frases prontas</span></div></div>
+    </div>
+    ${cont ? `<div class="resume"><div><small>${started ? "Continue de onde parou" : "Comece por aqui"}</small><b>${cont.mod.icon} ${esc(cont.title)}</b><div class="bar"><i style="width:${pct()}%"></i></div></div><a class="btn btn-sun" href="#/${cont.id}">${started ? "Continuar" : "Começar a primeira aula"} →</a></div>` : ""}
+    <h2 style="font-size:28px;margin:0 0 16px">Os módulos</h2>
+    <div class="mods">${MODS.map(m => { const d = modDone(m); return `<a class="mcard" href="#/${m.lessons[0].id}">
+      <div class="top"><span class="ic" aria-hidden="true">${m.icon}</span><div><span class="num">Módulo ${m.n}</span><h3>${esc(m.title)}</h3></div></div>
+      <p>${esc(m.desc)}</p>
+      <div class="foot"><span>${m.lessons.length} aulas</span><div class="bar"><i style="width:${Math.round(d / m.lessons.length * 100)}%"></i></div><span>${d}/${m.lessons.length}</span></div></a>`; }).join("")}</div>
+    ${MODS.length ? "" : `<div class="empty">As aulas ainda estão sendo carregadas.</div>`}
+    <footer>Dúvidas sobre o curso? <a href="https://wa.me/${WA}?text=${encodeURIComponent("Olá, Moshik! Estou fazendo o curso IA no Dia a Dia e tenho uma dúvida.")}" target="_blank" rel="noopener">Fale com o Moshik no WhatsApp</a> · <a href="../">Conhecer a mentoria</a></footer>`;
+  renderSide(null);
+  document.title = "Curso IA no Dia a Dia · IA para pequenos negócios";
+}
+
+const COPY_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>';
+function renderLesson(id){
+  const i = ALL.findIndex(l => l.id === id); if (i < 0) return renderHome();
+  const l = ALL[i], m = l.mod, prev = ALL[i - 1], next = ALL[i + 1], li = m.lessons.findIndex(x => x.id === l.id) + 1;
+  P.last = id; save();
+  const checks = P.checks[id] || [];
+  $("#view").innerHTML = `<article class="lesson">
+    <nav class="crumb" aria-label="Você está em"><a href="#/">Início</a><span>›</span><span>Módulo ${m.n} · ${esc(m.title)}</span></nav>
+    <h1>${esc(l.title)}</h1>
+    <div class="meta"><span>${m.icon} Aula ${li} de ${m.lessons.length}</span><span>⏱ ${l.dur || 8} min</span><span>${(l.prompts || []).length} frases prontas</span></div>
+    <div class="goal"><div><b>Nesta aula</b>${esc(l.goal)}</div></div>
+    <div class="intro">${(l.intro || []).map(p => `<p>${esc(p)}</p>`).join("")}</div>
+    ${l.steps?.length ? `<h2>Passo a passo</h2><ol class="steps">${l.steps.map(s => `<li><span>${esc(s)}</span></li>`).join("")}</ol>` : ""}
+    ${l.prompts?.length ? `<h2>Frases prontas para copiar</h2><p class="tools-note">Funcionam no Claude e no ChatGPT. Troque o que está entre <mark style="background:var(--sun-soft);border-radius:4px;padding:0 3px">[colchetes]</mark> pelo seu caso.</p>
+      ${l.prompts.map((p, k) => `<div class="prompt"><div class="ph"><b>${esc(p.label)}</b><button class="copy" type="button" data-k="${k}">${COPY_ICON}Copiar</button></div><pre>${mark(p.text)}</pre></div>`).join("")}` : ""}
+    ${l.example ? `<h2>Veja a diferença</h2><div class="vs"><div class="bad"><b>Pedido fraco</b>${esc(l.example.bad)}</div><div class="good"><b>Pedido forte</b>${esc(l.example.good)}</div></div>` : ""}
+    ${l.tip ? `<div class="note tip"><b>Dica</b>${esc(l.tip)}</div>` : ""}
+    ${l.warn ? `<div class="note warn"><b>Atenção</b>${esc(l.warn)}</div>` : ""}
+    <h2>Exercício</h2><div class="exercise"><b>Faça agora, no seu negócio</b><p>${esc(l.exercise)}</p></div>
+    ${l.check?.length ? `<h2>Checklist</h2><ul class="checks">${l.check.map((c, k) => `<li><label><input type="checkbox" data-c="${k}" ${checks.includes(k) ? "checked" : ""}>${esc(c)}</label></li>`).join("")}</ul>` : ""}
+    <div class="finish">
+      <button class="btn btn-line done-btn" type="button" id="doneBtn" aria-pressed="${isDone(id)}">${isDone(id) ? "✓ Aula concluída" : "Marcar como concluída"}</button>
+      <div class="nav">${prev ? `<a class="btn btn-line" href="#/${prev.id}">← Anterior</a>` : ""}${next ? `<a class="btn btn-green" href="#/${next.id}" id="nextBtn">Próxima aula →</a>` : `<a class="btn btn-sun" href="#/">🎉 Voltar ao início</a>`}</div>
+    </div>
+  </article>`;
+  $("#view").querySelectorAll(".copy").forEach(b => b.addEventListener("click", async () => {
+    const txt = l.prompts[+b.dataset.k].text;
+    try { await navigator.clipboard.writeText(txt); } catch (e) { const ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
+    b.classList.add("ok"); b.innerHTML = "✓ Copiado"; toast("Copiado! Agora cole no Claude ou no ChatGPT.");
+    setTimeout(() => { b.classList.remove("ok"); b.innerHTML = COPY_ICON + "Copiar"; }, 1800);
+  }));
+  $("#view").querySelectorAll("[data-c]").forEach(c => c.addEventListener("change", () => {
+    P.checks[id] = [...$("#view").querySelectorAll("[data-c]:checked")].map(x => +x.dataset.c); save();
+    if (P.checks[id].length === l.check.length && !isDone(id)) { P.done[id] = Date.now(); save(); syncDone(id); toast("Aula concluída! 🎉"); }
+  }));
+  $("#doneBtn").addEventListener("click", () => {
+    if (isDone(id)) delete P.done[id]; else { P.done[id] = Date.now(); toast("Aula concluída! 🎉"); }
+    save(); syncDone(id);
+  });
+  $("#nextBtn")?.addEventListener("click", () => { if (!isDone(id)) { P.done[id] = Date.now(); save(); } });
+  renderSide(id);
+  document.title = l.title + " · Curso IA no Dia a Dia";
+}
+function syncDone(id){ const b = $("#doneBtn"); b.setAttribute("aria-pressed", isDone(id)); b.textContent = isDone(id) ? "✓ Aula concluída" : "Marcar como concluída"; renderSide(id); }
+
+function route(){
+  const id = location.hash.replace(/^#\/?/, "");
+  if (id) renderLesson(id); else renderHome();
+  window.scrollTo({ top: 0, behavior: "auto" });
+  $("#view").focus({ preventScroll: true });
+}
+addEventListener("hashchange", route);
+
+/* menu no celular */
+function openNav(){ document.body.classList.add("nav-open", "locked"); $("#menuBtn").setAttribute("aria-expanded", "true"); }
+function closeNav(){ document.body.classList.remove("nav-open", "locked"); $("#menuBtn").setAttribute("aria-expanded", "false"); }
+$("#menuBtn").addEventListener("click", () => document.body.classList.contains("nav-open") ? closeNav() : openNav());
+$("#scrim").addEventListener("click", closeNav);
+addEventListener("keydown", e => { if (e.key === "Escape") closeNav(); });
+
+route();
+</script>
+</body>
+</html>
